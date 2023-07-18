@@ -1,0 +1,18 @@
+{
+  "name": "image-uploader",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/robersongarcia/image-uploader.git",
+  "author": "Roberson Garcia <roberson.gar12@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}
