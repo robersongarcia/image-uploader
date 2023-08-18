@@ -1,10 +1,9 @@
+import { UploadPage } from "./pages/UploadPage"
 
 function App() {
 
   return (
-    <>
-      <h1>App</h1>
-    </>
+    <UploadPage />
   )
 }
 
