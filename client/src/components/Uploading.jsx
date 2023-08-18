@@ -26,11 +26,12 @@ export const Uploading = () => {
             }>
             <Typography sx={
                 {
-                    fontSize: '1.5rem',
-                    textAlign: 'left',  
-                    marginBottom: '1rem',
-                    marginLeft: '5%',
-                }
+                    color: '#4F4F4F',
+                    textAlign: 'center',                
+                    fontSize: '1.8rem',
+                    fontStyle: 'normal',
+                    fontWeight: '500',                                
+                  }
             }>
                 Uploading...
             </Typography>

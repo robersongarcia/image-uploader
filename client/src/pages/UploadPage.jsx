@@ -31,10 +31,11 @@ export const UploadPage = () => {
         }>
           <Typography sx={
             {
-              fontSize: '1.5rem',
-              textAlign: 'center',
-              marginTop: '1.8rem',
-              marginBottom: '1rem',
+              color: '#4F4F4F',
+              textAlign: 'center',                
+              fontSize: '1.8rem',
+              fontStyle: 'normal',
+              fontWeight: '500',                                
             }
           }>
             Upload your image

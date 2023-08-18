@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Paper, Typography} from '@mui/material'
-import { CardImage, Footer } from '../components/'
+import { Footer } from '../components/'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 export const LinkPage = () => {
@@ -18,76 +19,115 @@ export const LinkPage = () => {
               xs: '75%',
               sm: '50%',
             },
-            height: {
-              xs: '60%',
-              sm: '45%',
-            },
+            height: 'auto',
             maxWidth: '450px',
-            maxHeight: '450px',
             borderRadius: '12px',            
             display: 'flex',
             flexDirection: 'column',
           }
         }>
-          <Typography sx={
+          <Box sx={
             {
-              fontSize: '1.5rem',
-              textAlign: 'center',
-              marginTop: '1.8rem',
-              marginBottom: '1rem',
-            }
-          }>
-            Upload your image
-          </Typography>
-          <Typography sx={
-            {
-              fontSize: '0.9rem',
-              textAlign: 'center',
-              marginBottom: '1.5rem',
-              color: '#828282',
-            }
-          }>
-            File should be jpeg, png...
-          </Typography>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-          }}>
-            <Box sx={{
               display: 'flex',
+              alignItems: 'center',
+              height: '100%',
+              width: '100%',
               flexDirection: 'column',
-              width: '90%',
-              justifyContent: 'center',
-              alignItems: 'center',
-              border: '2px dashed #97BEF4',
-              borderRadius: '12px',
-              padding: '2rem',   
-              backgroundColor: '#F5F5F5',                      
-            }}>
-              <input type='file' id='file' name='file' accept='image/*' style={{display: 'none'}}/>
-              <CardImage />
-              <Typography color={'#BDBDBD'} mt={3}>Drag & Drop your image</Typography>
-            </Box>
+            }
+          }>
+            
+            <CheckCircleIcon sx={
+              {
+                fontSize: '3rem',
+                color: '#219653',
+                marginBottom: '1rem',
+                marginTop: '1rem',
+              }
+            }/>
 
-            <Box>
-              <Typography color={'#A9A9A9'}>Or</Typography>
-            </Box>
+            <Typography sx={
+              {
+                color: '#4F4F4F',
+                textAlign: 'center',                
+                fontSize: '1.8rem',
+                fontStyle: 'normal',
+                fontWeight: '500',                                
+              }
+            }>
+              Uploaded Successfully!
+            </Typography>
 
-            <Box sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-              <Button variant='contained' size='small' color='primary' sx={
-                {
+            <Box sx={
+              {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '90%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '1rem',
+                borderRadius: '12px',
+              }
+            }>
+              <img 
+                style={{
+                  width: '100%',                  
+                  objectFit: 'cover',                  
+                  borderRadius: '12px',
+                  maxHeight: '400px',                 
+                }}                
+                src="https://placehold.co/800" alt="" />
+                
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  borderRadius: '8px',
+                  alignItems: 'center',
+                  backgroundColor: '#F6F8FB',
+                  width: '100%',
+                  border: '1px solid #E0E0E0',
+                  marginTop: '1rem',
+                  marginBottom: '1rem',
+                  height: '34px'
+                }}>
+                  <Typography sx={
+                    {
+                      fontSize: '1rem',
+                      textAlign: 'center',
+                      color: '#828282',
+                      marginLeft: '10px',
+                      marginRight: '10px',
+                      width: '80%',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }
+                  }>
+                    https:// Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero repudiandae optio porro expedita molestiae earum atque sint modi neque placeat eligendi vel ullam nesciunt laudantium, aspernatur quo corporis deserunt. Numquam.
+                  </Typography>  
+                  <Button 
+                    sx={
+                      {
+                        width: '20%',
+                        height: '95%',
+                        borderRadius: '8px',
+                        backgroundColor: '#2F80ED',
+                        color: '#FFFFFF',
+                        fontSize: '0.8rem',
+                        fontWeight: '500',
+                        textTransform: 'none',
+                        '&:hover': {
+                          backgroundColor: '#2D74DA',
+                        }
+                      }
+                    }
+                  >Copy</Button>                
+                </Box>
 
-                }
-              }>Choose a file</Button>
             </Box>
+              
           </Box>
+
+            
         </Paper>
        <Footer />
       </Grid>
