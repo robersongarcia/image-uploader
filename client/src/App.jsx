@@ -1,9 +1,11 @@
-import { UploadPage } from "./pages/UploadPage"
+// import { UploadPage } from "./pages"
+import { Uploading } from "./components"
+
 
 function App() {
 
   return (
-    <UploadPage />
+    <Uploading />
   )
 }
 
