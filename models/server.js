@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const fileUpload = require("express-fileupload")
 
 class Server {
   constructor() {
@@ -13,10 +14,19 @@ class Server {
   }
 
   middlewares() {
+    this.app.use(express.static('public'))
     this.app.use(cors()) // Enable CORS
     // add react app build
     // this.app.use(express.static(
     //     path.join(__dirname,“../client/build”)));
+
+    this.app.use(express.json())
+
+    this.app.use(fileUpload({
+      useTempFiles : true,
+      tempFileDir : '/tmp/',
+      limits: {fieldSize: 50 * 1024 * 1024},
+  }));
   }
 
   // Bind controllers to routes
