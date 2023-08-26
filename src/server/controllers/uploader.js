@@ -1,13 +1,11 @@
-const {response, request} =  require('express')
-const crypto = require('crypto')
-const { dirname } = require('path');
-const appDir = dirname(require.main.filename);
+import crypto from 'crypto'
+import { appRoot } from '../../../app.js';
 
-const home = (req, res = response) => {
+export const home = (req, res) => {
     res.send("Hello World")
 }
 
-const postFile = (req = request, res = response) => {
+export const postFile = (req, res) => {
     
     //Validations
     if (!req.files || Object.keys(req.files).length === 0 || !req.files.file) {
@@ -37,7 +35,7 @@ const postFile = (req = request, res = response) => {
 
     // Use the mv() method to place the file in the public folder
 
-    const pathName = `${appDir}/public/${uuid}.${fileName[fileName.length - 1]}`
+    const pathName = `${appRoot}/public/${uuid}.${fileName[fileName.length - 1]}`
 
     file.mv(pathName, (err) => {
         if (err){
@@ -53,9 +51,4 @@ const postFile = (req = request, res = response) => {
         });
     });
 
-}
-
-module.exports = {
-    home,
-    postFile
 }
