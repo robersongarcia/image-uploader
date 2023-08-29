@@ -26,7 +26,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](https://raw.githubusercontent.com/robersongarcia/image-uploader/main/public/Screenshot%202023-08-29%20023510.png)
 
 In the Image Uploader challenge, I dived into React frontend development and achieved key milestones, like Drag-and-Drop functionality & Folder Selection integrated from local folders using ```<input type="file" />```. Loader Integration during uploads, improving overall user experience, Displaying Uploaded Image and Clipboard Copy Feature. This journey taught me about user-centered design, asynchronous operations, and practical React applications. Overcoming challenges bolstered my skills, and I'm excited to apply these insights to future projects.
 
