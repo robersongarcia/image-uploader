@@ -47,7 +47,7 @@ export const Uploading = () => {
                     flexDirection: 'column',
                     width: '90%',
                     }}>
-                    <LinearProgress variant="determinate" value={5} />
+                    <LinearProgress variant="indeterminate" />
                 </Box>                
             </Box>
             <Footer />

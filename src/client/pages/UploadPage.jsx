@@ -1,11 +1,13 @@
 import { Box, Button, Grid, Paper, Typography} from '@mui/material'
-import { CardImage, Footer } from '../components/'
+import { CardImage, Footer, Uploading } from '../components/'
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 
-export const UploadPage = () => {
+export const UploadPage = ({status = 0, setStatus, setUrl }) => {
 
   const [imageFile, setImageFile] = useState(null)
+  
 
   const handleDrop = (event) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ export const UploadPage = () => {
     setImageFile(selectedFile);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     
     // Use the imageFile as needed, e.g., upload to a server
@@ -36,12 +38,35 @@ export const UploadPage = () => {
   };
 
   useEffect(() => {
-    console.log({imageFile})
+    if (imageFile) {
+      setStatus(1)
+
+      const formData = new FormData()
+      formData.append('file', imageFile)
+
+      fetch('/api/uploader', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)   
+        //get url of the web
+        const path = window.location.href
+
+        setUrl(path + 'files/' + data.uuid + '.' + data.ext)
+        
+        setTimeout(() => {
+          setStatus(2)
+        }, 3000)
+      })
+
+    }
   }
-  , [imageFile])
+  , [imageFile, setStatus, setUrl])
 
   return (
-      <Grid container width={'100vw'} height={'100vh'} sx={
+      status === 0?(<Grid container width={'100vw'} height={'100vh'} sx={
         {
           display: 'flex',
           justifyContent: 'center',
@@ -132,6 +157,12 @@ export const UploadPage = () => {
           </Box>
         </Paper>
        <Footer />       
-      </Grid>
+      </Grid>): (<Uploading />)
   )
+}
+
+UploadPage.propTypes = {
+  status: PropTypes.number,
+  setStatus: PropTypes.func,
+  setUrl: PropTypes.func,
 }

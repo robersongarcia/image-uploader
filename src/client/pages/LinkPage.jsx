@@ -1,9 +1,10 @@
 import { Box, Button, Grid, Paper, Typography} from '@mui/material'
 import { Footer } from '../components/'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { PropTypes } from "prop-types";
 
 
-export const LinkPage = () => {
+export const LinkPage = ({url}) => {
   return (
       <Grid container width={'100vw'} height={'100vh'} sx={
         {
@@ -75,7 +76,7 @@ export const LinkPage = () => {
                   borderRadius: '12px',
                   maxHeight: '400px',                 
                 }}                
-                src="https://placehold.co/800" alt="" />
+                src={url} alt="" />
                 
                 <Box sx={{
                   display: 'flex',
@@ -102,7 +103,7 @@ export const LinkPage = () => {
                       whiteSpace: 'nowrap',
                     }
                   }>
-                    https:// Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero repudiandae optio porro expedita molestiae earum atque sint modi neque placeat eligendi vel ullam nesciunt laudantium, aspernatur quo corporis deserunt. Numquam.
+                    {url}
                   </Typography>  
                   <Button 
                     sx={
@@ -120,6 +121,7 @@ export const LinkPage = () => {
                         }
                       }
                     }
+                    onClick={() => navigator.clipboard.writeText(url)}
                   >Copy</Button>                
                 </Box>
 
@@ -132,4 +134,8 @@ export const LinkPage = () => {
        <Footer />
       </Grid>
   )
+}
+
+LinkPage.propTypes = {
+  url: PropTypes.string.isRequired,
 }

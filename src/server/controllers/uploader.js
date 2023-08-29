@@ -47,7 +47,8 @@ export const postFile = (req, res) => {
         res.json({
             msg: 'File uploaded successfully',
             uuid: uuid,
-            path: pathName
+            path: pathName,
+            ext: fileName[fileName.length - 1]
         });
     });
 
