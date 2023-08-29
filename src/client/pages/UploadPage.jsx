@@ -1,8 +1,45 @@
 import { Box, Button, Grid, Paper, Typography} from '@mui/material'
 import { CardImage, Footer } from '../components/'
+import { useEffect, useState } from 'react'
 
 
 export const UploadPage = () => {
+
+  const [imageFile, setImageFile] = useState(null)
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+
+    // Access the dropped files from the event
+    const droppedFiles = event.dataTransfer.files;
+
+    // Assuming only one file is dropped and it's an image
+    if (droppedFiles.length === 1 && droppedFiles[0].type.startsWith('image/')) {
+      setImageFile(droppedFiles[0]);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    // Get the selected file from the input field
+    const selectedFile = event.target.files[0];
+    setImageFile(selectedFile);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    // Use the imageFile as needed, e.g., upload to a server
+    console.log('Uploading', imageFile);
+
+    // Clear the imageFile state after handling
+    setImageFile(null);
+  };
+
+  useEffect(() => {
+    console.log({imageFile})
+  }
+  , [imageFile])
+
   return (
       <Grid container width={'100vw'} height={'100vh'} sx={
         {
@@ -11,7 +48,10 @@ export const UploadPage = () => {
           alignItems: 'center',
           backgroundColor: '#FAFAFB',
         }
-      }>
+      }
+        onDrop={handleDrop}
+        onDragOver={(e) => e.preventDefault()}
+      >       
         <Paper elevation={4} sx={
           {
             width: {
@@ -68,29 +108,30 @@ export const UploadPage = () => {
               padding: '2rem',   
               backgroundColor: '#F5F5F5',                      
             }}>
-              <input type='file' id='file' name='file' accept='image/*' style={{display: 'none'}}/>
               <CardImage />
               <Typography color={'#BDBDBD'} mt={3}>Drag & Drop your image</Typography>
             </Box>
-
             <Box>
               <Typography color={'#A9A9A9'}>Or</Typography>
             </Box>
-
             <Box sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-              <Button variant='contained' size='small' color='primary' sx={
-                {
-
-                }
-              }>Choose a file</Button>
+              <form style={{display: 'none'}} onSubmit={handleSubmit}> 
+                <input type='file' id='file' name='file' accept='image/*' style={{display: 'none'}} onChange={handleInputChange}/>
+                <button id='file-submit-button' type='submit' style={{
+                  display: 'none',
+                }}></button>
+              </form>
+                <Button variant='contained' size='small' color='primary' onClick={() => {
+                  document.getElementById('file').click()
+                }} >Choose a file</Button>
             </Box>
           </Box>
         </Paper>
-       <Footer />
+       <Footer />       
       </Grid>
   )
 }
